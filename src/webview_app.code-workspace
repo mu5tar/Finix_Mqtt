@@ -1,0 +1,32 @@
+{
+	"folders": [
+		{
+			"path": "E:/Flutter/webview_app"
+		},
+		{
+			"name": " PrayerTimes_schaduling",
+			"path": "../../ PrayerTimes_schaduling"
+		},
+		{
+			"name": "time_scheduling",
+			"path": "../../time_scheduling"
+		},
+		{
+			"name": "finix_broker",
+			"path": "../../finix_broker"
+		},
+		{
+			"name": "finix_client",
+			"path": ".."
+		},
+		{
+			"name": "elevator",
+			"path": "../../elevator"
+		},
+		{
+			"name": "gate_test",
+			"path": "../../gate_test"
+		}
+	],
+	"settings": {}
+}
