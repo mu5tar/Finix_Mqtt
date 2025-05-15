@@ -21,7 +21,7 @@
      const uint8_t spi_miso = 19;
      const uint8_t spi_sck = 18;
    
-     const char* mqtt_server = "192.168.1.7";
+     const char* mqtt_server = "192.168.1.10";
      const int mqtt_port = 1883;
      const char* mqtt_client_id = "finix_id_Fan";
      const char* mqtt_sub_topic = "finix/Fan/control";

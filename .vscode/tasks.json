@@ -1,0 +1,17 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "🚀 Push to GitHub",
+        "type": "shell",
+        "command": "git add . ; git commit -m \"Auto commit\" ; git push",
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "problemMatcher": [],
+        "detail": "Adds, commits and pushes changes to GitHub"
+      }
+    ]
+  }
+  
