@@ -10,11 +10,10 @@ void setup() {
   Serial.begin(115200);
   delay(1000);
   initStatusLED();
+  MotorSetup();
   initNetwork();
   setupMQTT();
-setupMotor();
-
-  setRampingEnabled(true);}
+}
 
 void loop() {
   checkNetworkConnection();
