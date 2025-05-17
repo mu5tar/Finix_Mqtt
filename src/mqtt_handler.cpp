@@ -20,6 +20,8 @@ void mqttCallback(char* topic, byte* payload, unsigned int length) {
   if (String(topic) == config.mqtt_sub_topic) {
     if (msg == "off") {
       controlMotor(false, 0, "");
+      updateRamping();
+
       mqttClient.publish(config.mqtt_pub_topic, "Fan off done");
     } else if (msg.startsWith("on")) {
       // Expected format: on/2/ltr
@@ -35,6 +37,8 @@ void mqttCallback(char* topic, byte* payload, unsigned int length) {
       }
 
       controlMotor(true, speed, direction);
+      updateRamping();
+
       mqttClient.publish(config.mqtt_pub_topic, "Fan on done");
     }
   }
