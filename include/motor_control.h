@@ -14,5 +14,5 @@ Direction currentDirection = FORWARD;
 int currentSpeed = 0; // السرعة الحالية (PWM: 0-255)
 void MotorSetup() ;
 void controlMotor(MotorState desiredState, Direction desiredDirection, SpeedLevel desiredSpeed);
-
+void parseMessage(String message);
 #endif
