@@ -12,8 +12,9 @@ void setup() {
   initStatusLED();
   initNetwork();
   setupMQTT();
-  setupMotorPins();
-}
+setupMotor();
+
+  setRampingEnabled(true);}
 
 void loop() {
   checkNetworkConnection();
