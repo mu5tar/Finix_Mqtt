@@ -9,6 +9,8 @@ PubSubClient mqttClient;
 unsigned long lastConnectionAttempt = 0;
 bool lastConnectionStatus = false;
 
+
+
 void mqttCallback(char* topic, byte* payload, unsigned int length) {
   payload[length] = '\0';
   String msg = String((char*)payload);
@@ -19,27 +21,13 @@ void mqttCallback(char* topic, byte* payload, unsigned int length) {
 
   if (String(topic) == config.mqtt_sub_topic) {
     if (msg == "off") {
-      controlMotor(false, 0, "");
-      updateRamping();
-
-      mqttClient.publish(config.mqtt_pub_topic, "Fan off done");
+parseMessage( msg);  
+//delay(500);
+      mqttClient.publish(config.mqtt_pub_topic, "Motor off done");
     } else if (msg.startsWith("on")) {
-      // Expected format: on/2/ltr
-      int firstSlash = msg.indexOf('/');
-      int secondSlash = msg.indexOf('/', firstSlash + 1);
-
-      int speed = 1;
-      String direction = "ltr";
-
-      if (firstSlash != -1 && secondSlash != -1) {
-        speed = msg.substring(firstSlash + 1, secondSlash).toInt();
-        direction = msg.substring(secondSlash + 1);
-      }
-
-      controlMotor(true, speed, direction);
-      updateRamping();
-
-      mqttClient.publish(config.mqtt_pub_topic, "Fan on done");
+  parseMessage( msg);
+  
+      mqttClient.publish(config.mqtt_pub_topic, "Motor on done");
     }
   }
 }
