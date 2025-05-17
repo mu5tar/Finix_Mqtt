@@ -71,3 +71,44 @@ void controlMotor(MotorState desiredState, Direction desiredDirection, SpeedLeve
   }
 }
 
+void parseMessage(String message) {
+  int firstSlash = message.indexOf('/');
+  int secondSlash = message.lastIndexOf('/');
+
+  String stateStr = message.substring(0, firstSlash);
+  String speedStr = message.substring(firstSlash + 1, secondSlash);
+  String directionStr = message.substring(secondSlash + 1);
+
+  MotorState desiredState;
+  if (stateStr == "on") {
+    desiredState = ON;
+  } else if (stateStr == "off") {
+    desiredState = OFF;
+  } else {
+    Serial.println("Invalid state!");
+    return;
+  }
+
+  SpeedLevel desiredSpeed;
+  if (speedStr == "1") {
+    desiredSpeed = SLOW;
+  } else if (speedStr == "2") {
+    desiredSpeed = MEDIUM;
+  } else if (speedStr == "3") {
+    desiredSpeed = HIGH;
+  } else {
+    Serial.println("Invalid speed!");
+    return;
+  }
+
+  Direction desiredDirection;
+  if (directionStr == "rtl") {
+    desiredDirection = FORWARD;
+  } else if (directionStr == "ltr") {
+    desiredDirection = REVERSE;
+  } else {
+    Serial.println("Invalid direction!");
+    return;
+  }
+  controlMotor(desiredState, desiredDirection, desiredSpeed);
+}
